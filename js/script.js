@@ -52,7 +52,6 @@ registerFieldTest.addEventListener('change', (e) => {
 		sum = totalCost;
 	}
 	activitiesCost.innerHTML = `total:$${sum}`;
-	
 });
 
 // "Payment Info" section:
@@ -105,87 +104,76 @@ form.addEventListener('submit', (e) => {
 	cardNumberValueTest = /^\d{13,16}$/.test(cardNumberValue);
 	zipCodeValueTest = /^\d{5}$/.test(zipCodeValue);
 	cvvValueTest = /^\d{3}$/.test(cvvValue);
-// https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+	// https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 
-	if (nameTest === true)
-	{
-		name.parentElement.classList.add("valid");
-		name.parentElement.classList.remove(".not-valid");
-		name.parentElement.lastElementChild.style.display = "none";
-	}
-	else {
-		name.parentElement.classList.add("not-valid");
-		name.parentElement.lastElementChild.style.display = "block";
+	if (nameTest === true) {
+		name.parentElement.classList.add('valid');
+		name.parentElement.classList.remove('.not-valid');
+		name.parentElement.lastElementChild.style.display = 'none';
+	} else {
+		name.parentElement.classList.add('not-valid');
+		name.parentElement.lastElementChild.style.display = 'block';
 		e.preventDefault();
 	}
 
-	if (emailTest === true)
-	{
-		email.parentElement.classList.add("valid");
-		email.parentElement.classList.remove(".not-valid");
-		email.parentElement.lastElementChild.style.display = "none";
-
-	}
-	else {
-		email.parentElement.classList.add("not-valid");
-		email.parentElement.lastElementChild.style.display = "block";
+	if (emailTest === true) {
+		email.parentElement.classList.add('valid');
+		email.parentElement.classList.remove('.not-valid');
+		email.parentElement.lastElementChild.style.display = 'none';
+	} else {
+		email.parentElement.classList.add('not-valid');
+		email.parentElement.lastElementChild.style.display = 'block';
 		e.preventDefault();
 	}
+	if (Payment.value === 'credit-card') {
+		if (cardNumberValueTest === true) {
+			cardNumber.parentElement.classList.add('valid');
+			cardNumber.parentElement.classList.remove('.not-valid');
+			cardNumber.parentElement.lastElementChild.style.display = 'none';
+		} else {
+			cardNumber.parentElement.classList.add('not-valid');
+			cardNumber.parentElement.lastElementChild.style.display = 'block';
+			e.preventDefault();
+		}
 
-	if (cardNumberValueTest === true)
-	{
-		cardNumber.parentElement.classList.add("valid");
-		cardNumber.parentElement.classList.remove(".not-valid");
-		cardNumber.parentElement.lastElementChild.style.display = "none";
-	}
-	else {
-		cardNumber.parentElement.classList.add("not-valid");
-		cardNumber.parentElement.lastElementChild.style.display = "block";
-		e.preventDefault();
+		if (cvvValueTest === true) {
+			cvv.parentElement.classList.add('valid');
+			cvv.parentElement.classList.remove('.not-valid');
+			cvv.parentElement.lastElementChild.style.display = 'none';
+		} else {
+			cvv.parentElement.classList.add('not-valid');
+			cvv.parentElement.lastElementChild.style.display = 'block';
+			e.preventDefault();
+		}
+
+		if (zipCodeValueTest === true) {
+			zipCode.parentElement.classList.add('valid');
+			zipCode.parentElement.classList.remove('.not-valid');
+			zipCode.parentElement.lastElementChild.style.display = 'none';
+		} else {
+			zipCode.parentElement.classList.add('not-valid');
+			zipCode.parentElement.lastElementChild.style.display = 'block';
+			e.preventDefault();
+		}
 	}
 
-	if (cvvValueTest === true)
-	{
-		cvv.parentElement.classList.add("valid");
-		cvv.parentElement.classList.remove(".not-valid");
-		cvv.parentElement.lastElementChild.style.display = "none";
-	}
-	else {
-		cvv.parentElement.classList.add("not-valid");
-		cvv.parentElement.lastElementChild.style.display = "block";
-		e.preventDefault();
-	}
-
-	if (zipCodeValueTest === true)
-	{
-		zipCode.parentElement.classList.add("valid");
-		zipCode.parentElement.classList.remove(".not-valid");
-		zipCode.parentElement.lastElementChild.style.display = "none";
-	}
-	else {
-		zipCode.parentElement.classList.add("not-valid");
-		zipCode.parentElement.lastElementChild.style.display = "block";
-		e.preventDefault();
-	}
-	if (totalCost > 0)
-	{
-		activitiesBoxes.parentElement.classList.add("valid");
-		activitiesBoxes.parentElement.classList.remove(".not-valid");
-		activitiesBoxes.parentElement.lastElementChild.style.display = "none";
-	}else {
-		activitiesBoxes.parentElement.classList.add("not-valid");
-		activitiesBoxes.parentElement.lastElementChild.style.display = "block";
+	if (totalCost > 0) {
+		activitiesBoxes.parentElement.classList.add('valid');
+		activitiesBoxes.parentElement.classList.remove('.not-valid');
+		activitiesBoxes.parentElement.lastElementChild.style.display = 'none';
+	} else {
+		activitiesBoxes.parentElement.classList.add('not-valid');
+		activitiesBoxes.parentElement.lastElementChild.style.display = 'block';
 		e.preventDefault();
 	}
 });
 
-// Accessibility: 
-for (let i = 0; i < activitiesBox.length; i++){
+// Accessibility:
+for (let i = 0; i < activitiesBox.length; i++) {
 	activitiesBox[i].addEventListener('focus', (e) => {
-		activitiesBox[i].parentElement.classList= 'focus'
+		activitiesBox[i].parentElement.classList = 'focus';
 	});
 	activitiesBox[i].addEventListener('blur', (e) => {
-		activitiesBox[i].parentElement.classList = 'blur'
+		activitiesBox[i].parentElement.classList = 'blur';
 	});
-};
-
+}
